@@ -1,0 +1,188 @@
+/* Navigation Bar Styles */
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 200px;
+  background: #de1537;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  height: 10vh;
+  margin-bottom: 50px;
+}
+
+.nav::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: var(--darker-red);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav,
+.nav .nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  justify-content: space-between;
+}
+
+/* Link Styles */
+a {
+  color: var(--pokemon-text-color);
+  text-decoration: none;
+  text-shadow: -1px -1px 0 var(--pokemon-text-border),
+    1px -1px 0 var(--pokemon-text-border), -1px 1px 0 var(--pokemon-text-border),
+    1px 1px 0 var(--pokemon-text-border), -2px -2px 0 var(--pokemon-text-border),
+    2px -2px 0 var(--pokemon-text-border), -2px 2px 0 var(--pokemon-text-border),
+    2px 2px 0 var(--pokemon-text-border);
+}
+
+/* Logo Styles */
+.nav .logo {
+  font-size: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 80px;
+  display: block;
+}
+
+/* Navigation Links Styles */
+.nav .nav-links {
+  list-style: none;
+  gap: 80px;
+}
+
+.nav .nav-links a {
+  transition: all 0.2s linear;
+  font-size: 20px;
+  color: var(--text);
+  font-weight: 700;
+  text-shadow: none;
+  opacity: 1;
+}
+
+/* Search Icon and Box Styles */
+.nav .search-icon {
+  color: var(--text);
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.nav .search-box {
+  position: absolute;
+  right: 250px;
+  height: 45px;
+  max-width: 555px;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s linear;
+}
+
+.nav.openSearch .nav-links a {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav.openSearch .search-box {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-box .search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  left: 15px;
+  color: var(--details);
+  transform: translateY(-50%);
+}
+
+.search-box input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  color: var(--text-dark);
+  text-transform: uppercase;
+  background-color: var(--bg);
+  padding: 0 15px 0 45px;
+}
+
+/* Navigation Open/Close Button Styles */
+.nav .navOpenBtn,
+.nav .navCloseBtn {
+  display: none;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1370px) {
+  .nav {
+    padding: 15px 100px;
+  }
+  .nav .search-box {
+    right: 150px;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .nav .navOpenBtn,
+  .nav .navCloseBtn {
+    display: block;
+  }
+  .nav {
+    padding: 15px 20px;
+  }
+  .nav .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100%;
+    max-width: 280px;
+    width: 100%;
+    padding-top: 100px;
+    row-gap: 30px;
+    flex-direction: column;
+    background-color: var(--red);
+    border-right: 5px solid var(--darker-red);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    z-index: 100;
+  }
+  .nav.openNav .nav-links {
+    left: 0;
+  }
+  .nav .navOpenBtn {
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .nav .navCloseBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+  }
+  .nav .search-box {
+    top: calc(100% + 10px);
+    max-width: calc(100% - 20px);
+    right: 50%;
+    transform: translateX(50%);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+}

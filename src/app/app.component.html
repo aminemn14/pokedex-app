@@ -1,0 +1,8 @@
+<app-header
+  (searchTerm)="pokemonListComponent.onSearchTerm($event)"
+  (filter)="
+    pokemonListComponent.filterPokemonsByGeneration($event.start, $event.end)
+  "
+></app-header>
+
+<app-pokemon-list #pokemonListComponent></app-pokemon-list>

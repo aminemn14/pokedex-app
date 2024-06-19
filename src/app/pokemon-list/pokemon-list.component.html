@@ -1,0 +1,53 @@
+<!-- Liste des Pokémons -->
+<div
+  class="pokemon-grid"
+  *ngIf="!isLoading && displayedPokemons.length > 0; else loadingOrNoPokemons"
+>
+  <div
+    class="card"
+    *ngFor="let pokemon of displayedPokemons"
+    [ngStyle]="getCardStyle(pokemon)"
+  >
+    <div class="card-content">
+      <div class="card-top">
+        <span class="card-title">{{ pokemon.id }}.</span>
+        <p>
+          {{ pokemon.name }}
+        </p>
+      </div>
+      <div class="card-bottom">
+        <p>
+          <span *ngFor="let type of pokemon.types; let last = last">
+            {{ type.type.name }}<span *ngIf="!last"> - </span>
+          </span>
+        </p>
+        <p>{{ convertHeight(pokemon.height) }}</p>
+      </div>
+    </div>
+    <div class="card-image">
+      <img [src]="pokemon.sprites.front_default" alt="Pokemon" />
+    </div>
+  </div>
+</div>
+
+<!-- Message d'erreur si la recherche ne trouve aucun Pokémon -->
+<ng-template #loadingOrNoPokemons>
+  <div *ngIf="isLoading; else noPokemons">
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+  </div>
+  <ng-template #noPokemons>
+    <div class="no-pokemons">
+      <p>Aucun Pokémon trouvé</p>
+    </div>
+  </ng-template>
+</ng-template>
+
+<!-- Bouton Voir Plus pour charger plus de Pokémons -->
+<div
+  class="load-more"
+  *ngIf="!isLoading && displayedPokemons.length < filteredPokemons.length"
+>
+  <button (click)="loadMorePokemons()">Voir Plus</button>
+</div>

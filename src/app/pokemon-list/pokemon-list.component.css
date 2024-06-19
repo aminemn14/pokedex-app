@@ -1,0 +1,213 @@
+/* Grid Container for Pokémon Cards */
+.pokemon-grid {
+  display: grid;
+  grid-gap: 75px 16px;
+  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
+/* Media Queries for Pokémon Grid */
+@media screen and (max-width: 695px) {
+  .pokemon-grid {
+    grid-gap: 50px 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Card Styles */
+.card {
+  animation: fadeIn 0.5s ease-in-out;
+  width: 100%;
+  max-width: 320px;
+  color: black;
+  position: relative;
+  border-radius: 2.5em;
+  padding: 2em;
+  transition: transform 0.3s ease;
+}
+
+/* Fade-in Animation for Cards */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Card Content Styles */
+.card .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8em;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+/* Card Top and Bottom Sections */
+.card .card-top,
+.card .card-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Text Styles within Card */
+.card .card-top p,
+.card .card-top .card-title,
+.card .card-bottom p,
+.card .card-bottom .card-title {
+  margin: 0;
+}
+
+.card .card-title {
+  font-weight: bold;
+  color: var(--text);
+}
+
+.card .card-top p,
+.card .card-bottom p {
+  font-weight: 600;
+  color: var(--text);
+  text-transform: uppercase;
+}
+
+.card .card-bottom {
+  align-items: flex-end;
+}
+
+/* Card Image Styles */
+.card .card-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.card .card-image img {
+  width: 7em;
+  height: 7em;
+  transition: transform 0.4s ease;
+}
+
+/* Card Hover and Active States */
+.card:hover {
+  cursor: pointer;
+  transform: scale(0.97);
+}
+
+.card:hover .card-content {
+  transform: scale(0.97);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.3);
+}
+
+.card:active {
+  transform: scale(0.9);
+}
+
+/* Loader Styles */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}
+
+.loader {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  background: linear-gradient(to bottom, rgb(254, 0, 1) 50%, white 50%);
+  border-radius: 50%;
+  border: 8px solid black;
+  animation: spin 1s linear infinite;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  height: 8px;
+  width: 90px;
+  background: var(--text-dark);
+  top: 50%;
+  transform: translatey(-50%);
+}
+
+.loader::after {
+  content: "";
+  position: absolute;
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+  background: var(--text);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: inset 0 0 0 8px var(--text-dark), inset 0 0 0 10px var(--text),
+    inset 0 0 0 12px var(--text-dark);
+}
+
+/* Spin Animation for Loader */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Load More Button Styles */
+.load-more button {
+  background-color: var(--red);
+  border: 3px solid var(--darker-red);
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+.load-more button:hover {
+  background-color: var(--darker-red);
+  border: 3px solid var(--red);
+}
+
+/* Load More Container Styles */
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+/* No Pokémons Message Styles */
+.no-pokemons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: 800;
+  color: var(--text-dark);
+}

@@ -1,0 +1,39 @@
+<nav class="nav" #nav>
+  <i class="uil uil-bars navOpenBtn" #navOpenBtn></i>
+
+  <!-- Logo de l'App-->
+  <a href="/" class="logo"><img src="logo.png" /></a>
+
+  <!-- Navigation entre les générations de Pokémon de la 1G à la 7G -->
+  <ul class="nav-links">
+    <i class="uil uil-times navCloseBtn" #navCloseBtn></i>
+    <li>
+      <a href="#" (click)="filter.emit({ start: 1, end: 151 })">1G</a>
+    </li>
+    <li>
+      <a href="#" (click)="filter.emit({ start: 152, end: 251 })">2G</a>
+    </li>
+    <li>
+      <a href="#" (click)="filter.emit({ start: 252, end: 386 })">3G</a>
+    </li>
+    <li>
+      <a href="#" (click)="filter.emit({ start: 387, end: 493 })">4G</a>
+    </li>
+    <li>
+      <a href="#" (click)="filter.emit({ start: 494, end: 649 })">5G</a>
+    </li>
+    <li>
+      <a href="#" (click)="filter.emit({ start: 650, end: 721 })">6G</a>
+    </li>
+    <li>
+      <a href="#" (click)="filter.emit({ start: 722, end: 809 })">7G</a>
+    </li>
+  </ul>
+
+  <!-- Système de recherche de Pokémon par Nom ou par l'ID dans le Pokédex -->
+  <i class="uil uil-search search-icon" id="searchIcon" #searchIcon></i>
+  <div class="search-box">
+    <i class="uil uil-search search-icon"></i>
+    <input type="text" [formControl]="searchControl" placeholder="Nom / ID" />
+  </div>
+</nav>
